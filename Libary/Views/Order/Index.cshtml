@@ -1,0 +1,313 @@
+﻿@using Libary.ViewModel.OrderViewModel;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutOrder";
+}
+@model ListOrderViewModel
+<div class="page-content" style="text-align:center">
+    <br>
+    <div class="tabsetTabTest" style="margin-left:14%">
+        <!-- Tab 1 -->
+        <input type="radio" name="tabsetTabTest" id="tab1" aria-controls="marzen" checked>
+        <label for="tab1">UnAccept</label>
+        <!-- Tab 2 -->
+        <input type="radio" name="tabsetTabTest" id="tab2" aria-controls="rauchbier">
+        <label for="tab2">Accepted</label>
+        <!-- Tab 3 -->
+        <input type="radio" name="tabsetTabTest" id="tab3" aria-controls="dunkles">
+        <label for="tab3">Done</label>
+
+        <div class="tab-panels">
+            <section id="marzen" class="tab-panel">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">DateTime</th>
+                            <th scope="col">DatePay</th>
+                            <th scope="col">Action</th>
+                        </tr>               
+                    </thead>
+                    <tbody class="table-group-divider">
+                        @if(Model != null && Model.orderViewModels.Count > 0)
+                        {
+                            int count = 1;
+                            foreach (var item in Model.orderViewModels)
+                            {
+                                if(!item.IsAccept && !item.IsPay && item.IsActive)
+                                {
+                                      <tr>
+                                    <th>@count</th>
+                                    <td>@item.Id</td>
+                                    <td>@item.DateTime</td>
+                                    <td>@item.DatePay</td>
+                                    <td>
+                                        <div>
+                                            <p>
+                                                <label for="modalTestModel-1" class="btn btn-primary btnhover">View</label>
+                                            </p>
+                                        </div>
+
+                                        <input class="modalTestModel-state" id="modalTestModel-1" type="checkbox" />
+                                        <div class="modalTestModel">
+                                            <label class="modalTestModel__bg" for="modalTestModel-1"></label>
+                                            <div class="modalTestModel__inner">
+                                                <label class="modalTestModel__close" for="modalTestModel-1"></label>
+                                                    <h4>@item.Id</h4>
+                                                @foreach (var element in item.Historys)
+                                                {
+                                                   
+                                                    <div class="row">
+                                                         <div class="col-lg-1"></div>
+                                                        <div class="col-lg-4">
+                                                              <div style="width:150px;height:165px;margin-top:20px">
+                                                                    <img style="width:100%;height:100%;border-radius:5px" src="@element.Book.ImgUrl">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-7">
+                                                               <div class="row">
+                                                                    <div class="col-lg-6 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="formcontrolinput5" class="form-label">Author:</label>
+                                                                            <input type="text" value="@element.Book.Author" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="formcontrolinput5" class="form-label">Publisher:</label>
+                                                                            <input type="text" value="@element.Book.Pulisher" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="formcontrolinput5" class="form-label">DateTime:</label>
+                                                                            <input type="text" value="@element.Book.PulishDate.ToString("dd/MM/yyyy")" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="formcontrolinput5" class="form-label">Category:</label>
+                                                                            <input type="text" value="@element.Book.Category.Name" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                        </div>
+                                                                    </div>
+                                                               </div>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                }                                           
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5"><h2>No Order...</h2></td>
+                            </tr>
+                        }                       
+                    </tbody>
+                </table>
+            </section>
+            <section id="rauchbier" class="tab-panel">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">DatePay</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @if (Model != null && Model.orderViewModels.Count > 0)
+                            {
+                                int count = 1;
+                                foreach (var item in Model.orderViewModels)
+                                {
+                                    if (item.IsAccept && !item.IsPay && item.IsActive)
+                                    {
+                                        <tr>
+                                            <th>@count</th>
+                                            <td>@item.Id</td>
+                                            <td>@item.DateTime</td>
+                                            <td>@item.DatePay</td>
+                                            <td>
+                                                <div>
+                                                    <p>
+                                                        <label for="modalTestModel-1" class="btn btn-primary btnhover">View</label>
+                                                    </p>
+                                                </div>
+
+                                                <input class="modalTestModel-state" id="modalTestModel-1" type="checkbox" />
+                                                <div class="modalTestModel">
+                                                    <label class="modalTestModel__bg" for="modalTestModel-1"></label>
+                                                    <div class="modalTestModel__inner">
+                                                        <label class="modalTestModel__close" for="modalTestModel-1"></label>
+                                                        <h4>@item.Id</h4>
+                                                        @foreach (var element in item.Historys)
+                                                        {
+
+                                                            <div class="row">
+                                                                <div class="col-lg-1"></div>
+                                                                <div class="col-lg-4">
+                                                                    <div style="width:150px;height:165px;margin-top:20px">
+                                                                        <img style="width:100%;height:100%;border-radius:5px" src="@element.Book.ImgUrl">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label for="formcontrolinput5" class="form-label">Author:</label>
+                                                                                <input type="text" value="@element.Book.Author" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label for="formcontrolinput5" class="form-label">Publisher:</label>
+                                                                                <input type="text" value="@element.Book.Pulisher" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label for="formcontrolinput5" class="form-label">DateTime:</label>
+                                                                                <input type="text" value="@element.Book.PulishDate.ToString("dd/MM/yyyy")" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label for="formcontrolinput5" class="form-label">Category:</label>
+                                                                                <input type="text" value="@element.Book.Category.Name" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5"><h2>No Order...</h2></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+            </section>
+            <section id="dunkles" class="tab-panel">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">DateTime</th>
+                                <th scope="col">DatePay</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @if (Model != null && Model.orderViewModels.Count > 0)
+                            {
+                                int count = 1;
+                                foreach (var item in Model.orderViewModels)
+                                {
+                                if (item.IsAccept && item.IsPay && item.IsActive || item.IsAccept && item.IsPay && !item.IsActive)
+                                    {
+                                        <tr>
+                                            <th>@count</th>
+                                            <td>@item.Id</td>
+                                            <td>@item.DateTime</td>
+                                            <td>@item.DatePay</td>
+                                            <td>
+                                                <div>
+                                                    <p>
+                                                        <label for="modalTestModel-1" class="btn btn-primary btnhover">View</label>
+                                                    </p>
+                                                </div>
+
+                                                <input class="modalTestModel-state" id="modalTestModel-1" type="checkbox" />
+                                                <div class="modalTestModel">
+                                                    <label class="modalTestModel__bg" for="modalTestModel-1"></label>
+                                                    <div class="modalTestModel__inner">
+                                                        <label class="modalTestModel__close" for="modalTestModel-1"></label>
+                                                        <h4>@item.Id</h4>
+                                                        @foreach (var element in item.Historys)
+                                                        {
+
+                                                            <div class="row">
+                                                                <div class="col-lg-1"></div>
+                                                                <div class="col-lg-4">
+                                                                    <div style="width:150px;height:165px;margin-top:20px">
+                                                                        <img style="width:100%;height:100%;border-radius:5px" src="@element.Book.ImgUrl">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-7">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label for="formcontrolinput5" class="form-label">Author:</label>
+                                                                                <input type="text" value="@element.Book.Author" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label for="formcontrolinput5" class="form-label">Publisher:</label>
+                                                                                <input type="text" value="@element.Book.Pulisher" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label for="formcontrolinput5" class="form-label">DateTime:</label>
+                                                                                <input type="text" value="@element.Book.PulishDate.ToString("dd/MM/yyyy")" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label for="formcontrolinput5" class="form-label">Category:</label>
+                                                                                <input type="text" value="@element.Book.Category.Name" class="form-control" id="formcontrolinput5" placeholder="+1 123 456 7890">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5"><h2>No Order...</h2></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+                
+
+
+

@@ -1,0 +1,527 @@
+﻿@using AdminLibary.ViewModel.OrderViewModelAdmin;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ListOrderViewModelAdmin
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-6">
+                            <div class="sub-title"><h4>Order</h4></div>
+                            <ul class="nav nav-tabs md-tabs tabs-left b-none" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#home5" role="tab">New</a>
+                                    <div class="slide"></div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#profile5" role="tab">Accepted</a>
+                                    <div class="slide"></div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#messages5" role="tab">Finished</a>
+                                    <div class="slide"></div>
+                                </li>                            
+                            </ul>
+
+                            <div class="tab-content tabs-left-content card-block">
+                                @*tab 1*@
+                                <div class="tab-pane active" id="home5" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Deferred Rendering For Speed</h5>
+                                                    <span>The example below shows DataTables with deferred rendering enabled. For this small example you'll likely notice no difference, but larger tables can benefit significantly from simply enabling this parameter.</span>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="dt-responsive table-responsive">
+                                                        <table id="base-style" class="table table-striped table-bordered nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Id</th>
+                                                                    <th>Student-Code</th>
+                                                                    <th>DateTime</th>
+                                                                    <th>DatePay</th>
+                                                                    <th>Detail</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @if (Model != null && Model.orderViewModelAdmins != null && Model.orderViewModelAdmins.Count > 0)
+                                                                {
+                                                                    int count = 1;
+                                                                    foreach (var item in Model.orderViewModelAdmins)
+                                                                    {
+                                                                        if(!item.IsAccept && !item.IsPay && item.IsActive)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>@count</td>
+                                                                                <td>@item.Id</td>
+                                                                                <td>@item.StudentCode</td>
+                                                                                <td>@item.DateTime.ToString("dd/mm/yy")</td>
+                                                                                <td>@item.DatePay.ToString("dd/mm/yyyy")</td>
+                                                                                <td>
+                                                                                    <button class="btn btn-dark" href="#" data-toggle="modal" data-target="#large-Modal2">View</button>
+                                                                                    <div class="modal fade" id="large-Modal2" tabindex="-1" role="dialog">
+                                                                                        <div class="modal-dialog modal-lg" role="document" style="background-color:white">
+                                                                                            <div class="card-header">
+                                                                                                <h5>@item.Id</h5>
+                                                                                                <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                                                                                            </div>
+                                                                                            <div class="card-block">
+
+
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Student Name</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" id="numeric" placeholder="Numbers Only" value="@item.Card.Student.Username">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Citizen ID</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" value="@item.CitizenId" id="greater" placeholder="Number Greter than 50">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Phone number</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" value="@item.PhoneNum" id="less" placeholder="Number Less than 50">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Email</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" value="@item.Card.Student.Email" id="less" placeholder="Number Less than 50">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                @if (item.Card.Histories.Count > 0)
+                                                                                                {
+                                                                                                    foreach (var element in item.Historys)
+                                                                                                    {
+                                                                                                        <div class="form-group row">
+                                                                                                            <div class="col-sm-2"></div>
+                                                                                                            <div class="col-sm-3 col-form-label" style="width:100px;height:225px">
+                                                                                                                <img style="width:100%; height:100%;border-radius:5px" src="@element.Book.ImgUrl">
+                                                                                                            </div>
+                                                                                                            <div class="col-sm-7">
+                                                                                                                <div style="margin-top:8px">
+                                                                                                                    <input type="text" class="form-control" value="Name: @element.Book.Name" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Author: @element.Book.Author" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Creator: @element.Book.Creator" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Publisher: @element.Book.Pulisher" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="PublishDate: @element.Book.PulishDate.ToString("dd/mm/yy")" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Category: @element.Book.Category.Name" id="integer" placeholder="Integers Only">
+                                                                                                                    <span class="messages"></span>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    }
+                                                                                                }
+
+
+                                                                                                <div class="row">
+                                                                                                    <label class="col-sm-2"></label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <a class="btn btn-primary waves-effect waves-light " data-dismiss="modal">Cancel</a>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+
+                                                                                    <button class="btn btn-success" href="#" data-toggle="modal" data-target="#large-Modal">Accept</button>
+                                                                                    <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
+                                                                                        <div class="modal-dialog modal-lg" role="document">
+                                                                                            <div class="modal-content">
+                                                                                                <div class="modal-header">
+                                                                                                    <h4 class="modal-title">Notification</h4>
+                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                                <div class="modal-body">
+                                                                                                    <p>Are you sure to accept this order ?</p>
+                                                                                                </div>
+                                                                                                <div class="modal-footer">
+                                                                                                    <a href="/Order/Accept?id=@item.Id" class="btn btn-warning waves-effect ">submit</a>
+                                                                                                    <a class="btn btn-primary waves-effect waves-light " data-dismiss="modal">Cancel</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </td>
+                                                                            </tr>
+                                                                            count++;
+                                                                        } 
+
+                                                                    }
+                                                                }
+
+                                                            </tbody>                                                   
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*tab 2*@
+                                <div class="tab-pane" id="profile5" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Deferred Rendering For Speed</h5>
+                                                    <span>The example below shows DataTables with deferred rendering enabled. For this small example you'll likely notice no difference, but larger tables can benefit significantly from simply enabling this parameter.</span>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="dt-responsive table-responsive">
+                                                        <table id="base-style" class="table table-striped table-bordered nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Id</th>
+                                                                    <th>Student-Code</th>
+                                                                    <th>DateTime</th>
+                                                                    <th>DatePay</th>
+                                                                    <th>Detail</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @if (Model != null && Model.orderViewModelAdmins != null && Model.orderViewModelAdmins.Count > 0)
+                                                                {
+                                                                    int count = 1;
+                                                                    foreach (var item in Model.orderViewModelAdmins)
+                                                                    {
+                                                                        if (item.IsAccept && !item.IsPay && item.IsActive)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>@count</td>
+                                                                                <td>@item.Id</td>
+                                                                                <td>@item.StudentCode</td>
+                                                                                <td>@item.DateTime.ToString("dd/mm/yy")</td>
+                                                                                <td>@item.DatePay.ToString("dd/mm/yyyy")</td>
+                                                                                <td>
+                                                                                    <button class="btn btn-dark" href="#" data-toggle="modal" data-target="#large-Modal2">View</button>
+                                                                                    <div class="modal fade" id="large-Modal2" tabindex="-1" role="dialog">
+                                                                                        <div class="modal-dialog modal-lg" role="document" style="background-color:white">
+                                                                                            <div class="card-header">
+                                                                                                <h5>@item.Id</h5>
+                                                                                                <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                                                                                            </div>
+                                                                                            <div class="card-block">
+
+
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Student Name</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" id="numeric" placeholder="Numbers Only" value="@item.Card.Student.Username">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Citizen ID</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" value="@item.CitizenId" id="greater" placeholder="Number Greter than 50">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Phone number</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" value="@item.PhoneNum" id="less" placeholder="Number Less than 50">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Email</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" value="@item.Card.Student.Email" id="less" placeholder="Number Less than 50">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                @if (item.Card.Histories.Count > 0)
+                                                                                                {
+                                                                                                    foreach (var element in item.Historys)
+                                                                                                    {
+                                                                                                        <div class="form-group row">
+                                                                                                            <div class="col-sm-2"></div>
+                                                                                                            <div class="col-sm-3 col-form-label" style="width:100px;height:225px">
+                                                                                                                <img style="width:100%; height:100%;border-radius:5px" src="@element.Book.ImgUrl">
+                                                                                                            </div>
+                                                                                                            <div class="col-sm-7">
+                                                                                                                <div style="margin-top:8px">
+                                                                                                                    <input type="text" class="form-control" value="Name: @element.Book.Name" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Author: @element.Book.Author" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Creator: @element.Book.Creator" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Publisher: @element.Book.Pulisher" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="PublishDate: @element.Book.PulishDate.ToString("dd/mm/yy")" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Category: @element.Book.Category.Name" id="integer" placeholder="Integers Only">
+                                                                                                                    <span class="messages"></span>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    }
+                                                                                                }
+
+
+                                                                                                <div class="row">
+                                                                                                    <label class="col-sm-2"></label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <a class="btn btn-primary waves-effect waves-light " data-dismiss="modal">Cancel</a>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+
+                                                                                    <button class="btn btn-success" href="#" data-toggle="modal" data-target="#large-Modal">Finish</button>
+                                                                                    <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
+                                                                                        <div class="modal-dialog modal-lg" role="document">
+                                                                                            <div class="modal-content">
+                                                                                                <div class="modal-header">
+                                                                                                    <h4 class="modal-title">Notification</h4>
+                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                                <div class="modal-body">
+                                                                                                    <p>Are you sure to Finish this order ?</p>
+                                                                                                </div>
+                                                                                                <div class="modal-footer">
+                                                                                                    <a href="/Order/Finish?id=@item.Id" class="btn btn-warning waves-effect ">submit</a>
+                                                                                                    <a class="btn btn-primary waves-effect waves-light " data-dismiss="modal">Cancel</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </td>
+                                                                            </tr>
+                                                                            count++;
+                                                                        }
+
+                                                                    }
+                                                                }
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*tab 3*@
+                                <div class="tab-pane" id="messages5" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Deferred Rendering For Speed</h5>
+                                                    <span>The example below shows DataTables with deferred rendering enabled. For this small example you'll likely notice no difference, but larger tables can benefit significantly from simply enabling this parameter.</span>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="dt-responsive table-responsive">
+                                                        <table id="base-style" class="table table-striped table-bordered nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Id</th>
+                                                                    <th>Student-Code</th>
+                                                                    <th>DateTime</th>
+                                                                    <th>DatePay</th>
+                                                                    <th>Detail</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @if (Model != null && Model.orderViewModelAdmins != null && Model.orderViewModelAdmins.Count > 0)
+                                                                {
+                                                                    int count = 1;
+                                                                    foreach (var item in Model.orderViewModelAdmins)
+                                                                    {
+                                                                        if (item.IsAccept && item.IsPay && item.IsActive)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>@count</td>
+                                                                                <td>@item.Id</td>
+                                                                                <td>@item.StudentCode</td>
+                                                                                <td>@item.DateTime.ToString("dd/mm/yy")</td>
+                                                                                <td>@item.DatePay.ToString("dd/mm/yyyy")</td>
+                                                                                <td>
+                                                                                    <button class="btn btn-dark" href="#" data-toggle="modal" data-target="#large-Modal2">View</button>
+                                                                                    <div class="modal fade" id="large-Modal2" tabindex="-1" role="dialog">
+                                                                                        <div class="modal-dialog modal-lg" role="document" style="background-color:white">
+                                                                                            <div class="card-header">
+                                                                                                <h5>@item.Id</h5>
+                                                                                                <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                                                                                            </div>
+                                                                                            <div class="card-block">
+
+
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Student Name</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" id="numeric" placeholder="Numbers Only" value="@item.Card.Student.Username">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Citizen ID</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" value="@item.CitizenId" id="greater" placeholder="Number Greter than 50">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Phone number</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" value="@item.PhoneNum" id="less" placeholder="Number Less than 50">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-group row">
+                                                                                                    <label class="col-sm-2 col-form-label">Email</label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <input type="text" class="form-control" value="@item.Card.Student.Email" id="less" placeholder="Number Less than 50">
+                                                                                                        <span class="messages"></span>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                @if (item.Card.Histories.Count > 0)
+                                                                                                {
+                                                                                                    foreach (var element in item.Historys)
+                                                                                                    {
+                                                                                                        <div class="form-group row">
+                                                                                                            <div class="col-sm-2"></div>
+                                                                                                            <div class="col-sm-3 col-form-label" style="width:100px;height:225px">
+                                                                                                                <img style="width:100%; height:100%;border-radius:5px" src="@element.Book.ImgUrl">
+                                                                                                            </div>
+                                                                                                            <div class="col-sm-7">
+                                                                                                                <div style="margin-top:8px">
+                                                                                                                    <input type="text" class="form-control" value="Name: @element.Book.Name" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Author: @element.Book.Author" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Creator: @element.Book.Creator" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Publisher: @element.Book.Pulisher" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="PublishDate: @element.Book.PulishDate.ToString("dd/mm/yy")" id="integer" placeholder="Integers Only">
+                                                                                                                    <input type="text" class="form-control" value="Category: @element.Book.Category.Name" id="integer" placeholder="Integers Only">
+                                                                                                                    <span class="messages"></span>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    }
+                                                                                                }
+
+
+                                                                                                <div class="row">
+                                                                                                    <label class="col-sm-2"></label>
+                                                                                                    <div class="col-sm-10">
+                                                                                                        <a class="btn btn-primary waves-effect waves-light " data-dismiss="modal">Cancel</a>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+
+                                                                                    <button class="btn btn-success" href="#" data-toggle="modal" data-target="#large-Modal">Delete</button>
+                                                                                    <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
+                                                                                        <div class="modal-dialog modal-lg" role="document">
+                                                                                            <div class="modal-content">
+                                                                                                <div class="modal-header">
+                                                                                                    <h4 class="modal-title">Notification</h4>
+                                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                                <div class="modal-body">
+                                                                                                    <p>Are you sure to delete this order ?</p>
+                                                                                                </div>
+                                                                                                <div class="modal-footer">
+                                                                                                    <a href="/Order/Delete?id=@item.Id" class="btn btn-warning waves-effect ">submit</a>
+                                                                                                    <a class="btn btn-primary waves-effect waves-light " data-dismiss="modal">Cancel</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </td>
+                                                                            </tr>
+                                                                            count++;
+                                                                        }
+
+                                                                    }
+                                                                }
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @if (ViewBag.Error != null)
+    {
+        <script>
+            iziToast.error({
+                title: 'Error: ',
+                message: '@ViewBag.Error',
+                position: 'topRight'
+            });
+        </script>
+    }
+    @if (ViewBag.Success != null)
+    {
+        <script>
+            iziToast.success({
+                title: 'success:',
+                message: '@ViewBag.Success',
+                position: 'topRight'
+            });
+        </script>
+    }
+
+    <script>
+        function closeModel(){
+            document.getElementById("large-Modal2").style.visibility = "hidden";
+        }
+    </script>
+}
