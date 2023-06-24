@@ -3865,11 +3865,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\Service\\Service.csproj",
+      "projectUniqueName": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\Service\\Service.csproj",
       "projectName": "Service",
-      "projectPath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\Service\\Service.csproj",
+      "projectPath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\Service\\Service.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\Service\\obj\\",
+      "outputPath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3891,8 +3891,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\DataService\\DataService.csproj": {
-              "projectPath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\DataService\\DataService.csproj"
+            "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\DataService\\DataService.csproj": {
+              "projectPath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\DataService\\DataService.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QlXwQXXjATXDwVSFOLkIFcamOOa7ygbosnP8aR2nAWAh7zL/lhA9htLi9CB0V9bq5IT3YFJigrWFdislnoDTfw==",
+  "dgSpecHash": "6Im5mdNw150XppUV2bG9rTxmu0Wppa2z5jJpLJ5NPVkhlFhsy8Tvkbb7WXXqOvCKV/CnGEA8nXj/QRu+7ucW8w==",
   "success": true,
-  "projectFilePath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\AdminLibary\\AdminLibary.csproj",
+  "projectFilePath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\AdminLibary\\AdminLibary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\autofac\\6.4.0\\autofac.6.4.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\autofac.extensions.dependencyinjection\\8.0.0\\autofac.extensions.dependencyinjection.8.0.0.nupkg.sha512",

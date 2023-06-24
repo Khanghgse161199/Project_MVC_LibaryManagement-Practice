@@ -3959,11 +3959,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\AdminLibary\\AdminLibary.csproj",
+      "projectUniqueName": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\AdminLibary\\AdminLibary.csproj",
       "projectName": "AdminLibary",
-      "projectPath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\AdminLibary\\AdminLibary.csproj",
+      "projectPath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\AdminLibary\\AdminLibary.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\AdminLibary\\obj\\",
+      "outputPath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\AdminLibary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3986,8 +3986,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\Service\\Service.csproj": {
-              "projectPath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\Service\\Service.csproj"
+            "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\Service\\Service.csproj": {
+              "projectPath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\Service\\Service.csproj"
             }
           }
         }

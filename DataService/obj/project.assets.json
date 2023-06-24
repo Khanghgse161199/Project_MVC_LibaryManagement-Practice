@@ -4040,11 +4040,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\DataService\\DataService.csproj",
+      "projectUniqueName": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\DataService\\DataService.csproj",
       "projectName": "DataService",
-      "projectPath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\DataService\\DataService.csproj",
+      "projectPath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\DataService\\DataService.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\DataService\\obj\\",
+      "outputPath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\DataService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

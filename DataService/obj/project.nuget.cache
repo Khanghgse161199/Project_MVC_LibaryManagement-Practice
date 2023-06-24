@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qguaCmVSwPcyf8TLLAimvvwCWEwU6ht2oaI7/9J2xX1lZUcwlomIub7sWa5fFI5kWwRqvLBK3Pd5J+RiCgnnZA==",
+  "dgSpecHash": "OLxsP7mNZ2JvblAgRPGHrMSBSIPHRa5Ot4imsnX1Ftcnv36XRfkX00fLRVoDOa7oRRwAKVtdCRv48hFxPXC9vA==",
   "success": true,
-  "projectFilePath": "E:\\Project Code\\Asp.net MVC\\LibaryManagerment\\DataService\\DataService.csproj",
+  "projectFilePath": "E:\\Project Code\\Project_Cv\\Project_MVC_LibaryManagement-Practice\\DataService\\DataService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
